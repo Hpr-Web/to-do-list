@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>
+                <%= listTitle %>
+            </h1>
+        </div>
+        <% itemList.forEach(item=> { %>
+            <div class="list">
+                <form action="/delete" method="post">
+                    <input type="checkbox" name="checkbox" id="checkbox" value=" <%= item._id %>" onchange="this.form.submit()">
+                <p>
+                    <%= item.name %>
+                </p>
+                <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+                </form>
+                
+            </div>
+            <% }); %>
+
+                <div class="addItem">
+                    <form action="/" method="post">
+                        <input type="text" name="additem" id="additem" placeholder="New Item">
+                        <button type="submit" name="submit" value="<%= listTitle %>">+</button>
+                    </form>
+                </div>
+    </div>
+</body>
+<footer>
+    Copyright 2023
+</footer>
+
+</html>
